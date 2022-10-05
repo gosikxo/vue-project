@@ -1,36 +1,40 @@
-<script setup>
-  let greeting = 'hello'
-  const isVisible = true
-  const isVisible2 = false
+<script>
+import { reactive } from 'vue'
+
+export default {
+  setup() {
+    const state = reactive({ isVisible: true, greeting: "Hello!" })
+
+    function toggleBox() {
+      console.log(state.isVisible)
+      state.isVisible = !state.isVisible
+    }
+
+    return {
+      state, toggleBox
+    }
+  }
+}
 </script>
 
 <template>
   <div id="app" v-cloak>
-    <h1> {{greeting}} </h1>
-    <input v-model="greeting"/>
-    <div class="box" v-if="isVisible"></div>
-    <div class="box2" v-else-if="isVisible2"></div>
-    <div class="box3" v-else></div>
+    {{state.greeting}}
+    <input v-model="state.greeting" />
+    <hr />
+    <button @click="toggleBox">Toggle box</button>
+    <div v-if="state.isVisible" class="box"></div>
   </div>
 </template>
 
 <style>
-  .box {
-    background-color: red;
-    width: 40px;
-    height: 40px;
-  }
-  .box2 {
-    background-color: blue;
-    width: 40px;
-    height: 40px;
-  }
-  .box3 {
-    background-color: pink;
-    width: 40px;
-    height: 40px;
-  }
-  [v-cloak] {
-    display: none
-  }
+.box {
+  background-color: pink;
+  width: 40px;
+  height: 40px;
+}
+
+[v-cloak] {
+  display: none
+}
 </style>
