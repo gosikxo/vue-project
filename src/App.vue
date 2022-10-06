@@ -10,8 +10,12 @@ export default {
       state.isVisible = !state.isVisible
     }
 
+    function greet() {
+      console.log(state.greeting)
+    }
+
     return {
-      state, toggleBox
+      state, toggleBox, greet
     }
   }
 }
@@ -20,7 +24,7 @@ export default {
 <template>
   <div id="app" v-cloak>
     {{state.greeting}}
-    <input v-model="state.greeting" />
+    <input @keyup.enter="greet" v-model="state.greeting" />
     <hr />
     <button @click="toggleBox">Toggle box</button>
     <div v-if="state.isVisible" class="box"></div>
