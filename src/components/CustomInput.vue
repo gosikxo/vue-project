@@ -1,10 +1,16 @@
 <script>
+import { reactive, computed } from 'vue'
+
 export default {
     props: {
         label: String
     },
     setup() {
+        const state = reactive({ inputValue: ''})
 
+        return {
+            state
+        }
     }
 }
 </script>
@@ -12,7 +18,7 @@ export default {
 <template>
     <label>
         {{ label }}
-        <input type="text" v-model="inputValue">
+        <input type="text" v-model="state.inputValue">
     </label>
 
 </template>
