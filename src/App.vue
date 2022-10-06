@@ -29,18 +29,17 @@ export default {
 <template>
   <div id="app" v-cloak>
     <LoginForm />
-    <hr />
-    <button @click="toggleBox">Toggle box</button>
-    <div v-if="state.isVisible" class="box"></div>
+    <!-- <button @click="toggleBox">Toggle box</button>
+    <div v-if="state.isVisible" class="box"></div> -->
   </div>
 </template>
 
 <style>
-.box {
+/* .box {
   background-color: pink;
   width: 40px;
   height: 40px;
-}
+} */
 
 [v-cloak] {
   display: none
