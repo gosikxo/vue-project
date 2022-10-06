@@ -1,8 +1,12 @@
 <script>
 import { reactive } from 'vue'
+import CustomInput from './CustomInput.vue'
 export default {
+    components: {
+        CustomInput: CustomInput
+  },
     setup() {
-        const state = reactive({ title: 'Login Form', email: "", password: "" })
+        const state = reactive({ title: 'Login Form', email: "", password: "", emailLabel: "Email", passwordLabel: "Password" })
 
         function handleSubmit() {
             console.log(state.password)
@@ -18,8 +22,8 @@ export default {
 <template>
     <form @submit.prevent="handleSubmit">
         <h1>{{ state.title }}</h1>
-        <input type="email" v-model="state.email">
-        <input type="password" v-model="state.password">
+        <CustomInput type="email" :label="state.emailLabel" />
+        <CustomInput type="password" :label="state.passwordLabel" />
         <button>Log in</button>
     </form>
 </template>
