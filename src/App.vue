@@ -1,8 +1,13 @@
 <script>
 import { reactive } from 'vue'
+import LoginForm from './components/LoginForm.vue'
 
 export default {
+  components: {
+    LoginForm: LoginForm
+  },
   setup() {
+
     const state = reactive({ isVisible: true, greeting: "Hello!" })
 
     function toggleBox() {
@@ -23,8 +28,7 @@ export default {
 
 <template>
   <div id="app" v-cloak>
-    {{state.greeting}}
-    <input @keyup.enter="greet" v-model="state.greeting" />
+    <LoginForm />
     <hr />
     <button @click="toggleBox">Toggle box</button>
     <div v-if="state.isVisible" class="box"></div>
