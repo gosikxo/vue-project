@@ -4,7 +4,8 @@ import { reactive, computed } from 'vue'
 export default {
     props: {
         label: String,
-        modelValue: String
+        modelValue: String,
+        type: String
     },
     emits: ['update:modelValue'],
     setup(props, ctx) {
@@ -28,7 +29,7 @@ export default {
 <template>
     <label>
         {{ label }}
-        <input type="text" v-model="inputValue">
+        <input :type="type" v-model="inputValue">
     </label>
 
 </template>
