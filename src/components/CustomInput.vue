@@ -3,13 +3,23 @@ import { reactive, computed } from 'vue'
 
 export default {
     props: {
-        label: String
+        label: String,
+        modelValue: String
     },
-    setup() {
+    emits: ['update:modelValue'],
+    setup(props, ctx) {
         const state = reactive({ inputValue: ''})
+        const inputValue = computed({
+        get() {
+            return props.modelValue
+        },
+        set(value) {
+            ctx.emit('update:modelValue', value)
+        }
+})
 
         return {
-            state
+            state, inputValue
         }
     }
 }
@@ -18,7 +28,7 @@ export default {
 <template>
     <label>
         {{ label }}
-        <input type="text" v-model="state.inputValue">
+        <input type="text" v-model="inputValue">
     </label>
 
 </template>

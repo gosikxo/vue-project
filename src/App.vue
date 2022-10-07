@@ -11,12 +11,10 @@ export default {
     const state = reactive({ isVisible: true, greeting: "Hello!" })
 
     function toggleBox() {
-      console.log(state.isVisible)
       state.isVisible = !state.isVisible
     }
 
     function greet() {
-      console.log(state.greeting)
     }
 
     return {

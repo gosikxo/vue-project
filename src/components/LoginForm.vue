@@ -9,7 +9,7 @@ export default {
         const state = reactive({ title: 'Login Form', email: "", password: "", emailLabel: "Email", passwordLabel: "Password" })
 
         function handleSubmit() {
-            console.log(state.password)
+            console.log(state.password, state.email)
         }
 
         return {
@@ -22,8 +22,8 @@ export default {
 <template>
     <form @submit.prevent="handleSubmit">
         <h1>{{ state.title }}</h1>
-        <CustomInput v-model="email" :label="state.emailLabel" />
-        <CustomInput v-model="password" :label="state.passwordLabel" />
+        <CustomInput v-model="state.email" :label="state.emailLabel" />
+        <CustomInput v-model="state.password" :label="state.passwordLabel" />
         <button>Log in</button>
     </form>
 </template>
